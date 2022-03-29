@@ -7,20 +7,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:6247733141:android:4c87ac54e4d17ff374489c",
+        "mobilesdk_app_id": "1:6247733141:android:11d92dfb287c12c074489c",
         "android_client_info": {
-          "package_name": "ir.blackiq.timetracker"
+          "package_name": "ir.blackiq.timetracker.flutter_time_tracker"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "6247733141-g18k510a8vd567lf77n38vc8o2goh6uq.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "ir.blackiq.timetracker",
-            "certificate_hash": "90672126111fa48780d08c66d852815fe41b702d"
-          }
-        },
         {
           "client_id": "6247733141-r5rs14tvpful8rjbkp2d8jd549go2a3d.apps.googleusercontent.com",
           "client_type": 3
@@ -37,6 +29,13 @@
             {
               "client_id": "6247733141-r5rs14tvpful8rjbkp2d8jd549go2a3d.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "6247733141-2lpposbhoai2vla3hv16k296ul9e30vu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "i"
+              }
             }
           ]
         }
