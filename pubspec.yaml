@@ -13,11 +13,17 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  provider: ^6.0.2
+
+  # Google
+  google_sign_in: ^5.2.4
+  google_fonts: ^2.3.1
+
+  # FlutterFire
   firebase_core: ^1.12.0
   firebase_auth: ^3.3.8
-  provider: ^6.0.2
-  google_fonts: ^2.3.1
-  google_sign_in: ^5.2.4
+  cloud_firestore: ^3.1.10
+
 
 dev_dependencies:
   flutter_test:
