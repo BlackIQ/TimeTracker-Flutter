@@ -32,10 +32,10 @@ class _AuthScreenState extends State<AuthScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             const SizedBox(height: 125),
-            const Center(
+            Center(
               child: Text(
-                'Sign in',
-                style: TextStyle(
+                login ? 'Login' : 'Register',
+                style: const TextStyle(
                   fontSize: 50,
                 ),
               ),
