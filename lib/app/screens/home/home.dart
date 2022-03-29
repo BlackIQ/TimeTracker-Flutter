@@ -14,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final user = FirebaseAuth.instance.currentUser;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance.collection('tasks').where('uid', isNotEqualTo: 'amir').snapshots();
+  final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance.collection('tasks').where('uid', isEqualTo: 'amir').snapshots();
 
   final TextEditingController _name = TextEditingController();
 
