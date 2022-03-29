@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "6247733141",
+    "project_id": "time-tracker-f3ebc",
+    "storage_bucket": "time-tracker-f3ebc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6247733141:android:4c87ac54e4d17ff374489c",
+        "android_client_info": {
+          "package_name": "ir.blackiq.timetracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "6247733141-g18k510a8vd567lf77n38vc8o2goh6uq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ir.blackiq.timetracker",
+            "certificate_hash": "90672126111fa48780d08c66d852815fe41b702d"
+          }
+        },
+        {
+          "client_id": "6247733141-r5rs14tvpful8rjbkp2d8jd549go2a3d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqSfr9QifEBMyR54BZq6eJqR8ErfCD2Fk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "6247733141-r5rs14tvpful8rjbkp2d8jd549go2a3d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
