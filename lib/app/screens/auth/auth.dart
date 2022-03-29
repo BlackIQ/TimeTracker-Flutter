@@ -107,7 +107,9 @@ class _AuthScreenState extends State<AuthScreen> {
             FullButton(
               text: 'Authenticate with Google',
               color: Colors.red,
-              onClick: () {},
+              onClick: () async {
+                await googleAuth(context);
+              },
             ),
             const SizedBox(height: 10),
             FullButton(
