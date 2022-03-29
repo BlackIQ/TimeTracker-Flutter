@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_time_tracker/app/firebase/firebase_options.dart';
+import 'package:flutter_time_tracker/app/services/firebase_options.dart';
 import 'package:flutter_time_tracker/app/screens/landing.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
