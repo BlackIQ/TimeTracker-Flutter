@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_time_tracker/app/screens/home/home.dart';
+import 'package:flutter_time_tracker/app/services/flutterfire.dart';
 import 'package:flutter_time_tracker/app/widgets/w-button.dart';
 import 'package:flutter_time_tracker/app/widgets/w-field.dart';
 
@@ -18,17 +20,27 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0,
-        title: const Text('Login to your account'),
-      ),
-      body: Padding(
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   elevation: 0,
+      //   title: const Text('Login to your account'),
+      // ),
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            const SizedBox(height: 125),
+            const Center(
+              child: Text(
+                'Sign in',
+                style: TextStyle(
+                  fontSize: 50,
+                ),
+              ),
+            ),
+            const SizedBox(height: 30),
             FullField(
               controller: _email,
               label: 'Email',
@@ -47,12 +59,19 @@ class _AuthScreenState extends State<AuthScreen> {
                 ? FullButton(
                     text: 'Login',
                     color: Colors.indigo,
-                    onClick: () {},
+                    onClick: () async {
+                      try {
+                        await loginAuth(_email.text, _password.text, context);
+                        Navigator.pop(context);
+                      } catch (error) {}
+                    },
                   )
                 : FullButton(
                     text: 'Create',
                     color: Colors.indigo,
-                    onClick: () {},
+                    onClick: () async {
+                      await registerAuth(_email.text, _password.text, context);
+                    },
                   ),
             const SizedBox(height: 10),
             login
@@ -94,7 +113,9 @@ class _AuthScreenState extends State<AuthScreen> {
             FullButton(
               text: 'Authenticate Anonymously',
               color: Colors.grey,
-              onClick: () {},
+              onClick: () async {
+                await anonAuth(context);
+              },
             ),
           ],
         ),
