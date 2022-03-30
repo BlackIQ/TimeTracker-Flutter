@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   late Stream<QuerySnapshot> _usersStream;
 
-  void check(uid) {
+  void getTasks(uid) {
     setState(() {
       _usersStream = FirebaseFirestore.instance
           .collection('tasks')
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    check(user?.uid);
+    getTasks(user?.uid);
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -116,11 +116,44 @@ class _HomeScreenState extends State<HomeScreen> {
         return snapshot.data!.docs.isNotEmpty
             ? ListView(
                 children: snapshot.data!.docs.map((DocumentSnapshot document) {
-                  Map<String, dynamic> data =
+                  Map<String, dynamic> task =
                       document.data()! as Map<String, dynamic>;
+                  String docId = document.id;
                   return ListTile(
-                    title: Text(data['name']),
-                    onTap: () {},
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Checkbox(value: task['status'], onChanged: (bool? value) {}),
+                        Text(task['name']),
+                      ],
+                    ),
+                    onTap: () async {
+                      Map<String, dynamic> data = {
+                        'status': !task['status'],
+                      };
+                      tasksReference.doc(docId).update(data).then((value) {
+                        print("Task Updated");
+                      }).catchError((error) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Something went wrong.'),
+                              content: Text(error.toString()),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: const Text('Ok'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      });
+                    },
                   );
                 }).toList(),
               )
@@ -131,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _add() {
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -149,6 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Map<String, dynamic> data = {
                 'name': _name.text,
                 'uid': user?.uid,
+                'status': false,
                 'created': FieldValue.serverTimestamp(),
               };
 
