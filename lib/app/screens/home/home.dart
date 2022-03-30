@@ -128,11 +128,34 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(task['name']),
                       ],
                     ),
-                    onTap: () async {
+                    onTap: () {
                       Map<String, dynamic> data = {
                         'status': !task['status'],
                       };
                       tasksReference.doc(docId).update(data).then((value) {
+                        print("Task Updated");
+                      }).catchError((error) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Something went wrong.'),
+                              content: Text(error.toString()),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: const Text('Ok'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      });
+                    },
+                    onLongPress: () {
+                      tasksReference.doc(docId).delete().then((value) {
                         print("Task Updated");
                       }).catchError((error) {
                         showDialog(
