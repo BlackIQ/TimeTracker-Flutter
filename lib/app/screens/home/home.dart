@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // pageController.jumpToPage(index);
     pageController.animateToPage(
       index,
-      duration: Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 1000),
       curve: Curves.ease,
     );
   }
@@ -36,10 +36,12 @@ class _HomeScreenState extends State<HomeScreen> {
       FirebaseFirestore.instance.collection('tasks');
 
   late Stream<QuerySnapshot> _usersStream;
+  late Stream<QuerySnapshot> _tasksStream;
+  late DocumentSnapshot userData;
 
   void getTasks(uid) {
     setState(() {
-      _usersStream = FirebaseFirestore.instance
+      _tasksStream = FirebaseFirestore.instance
           .collection('tasks')
           .where('uid', isEqualTo: uid.toString())
           .snapshots();
@@ -103,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _home() {
     return StreamBuilder<QuerySnapshot>(
-      stream: _usersStream,
+      stream: _tasksStream,
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
           return const Center(child: Text('Something went wrong'));
@@ -124,7 +126,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Checkbox(value: task['status'], onChanged: (bool? value) {}),
+                        Checkbox(
+                            value: task['status'], onChanged: (bool? value) {}),
                         Text(task['name']),
                       ],
                     ),
@@ -275,9 +278,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.white,
                     ),
                   ),
-                )
+                ),
               ],
             ),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.all(25),
+          child: Text(
+            'Changing Name is available only in web application.',
           ),
         ),
       ],
