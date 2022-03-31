@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ir.blackiq.timetracker.flutter_time_tracker">
    <application
-        android:label="flutter_time_tracker"
+        android:label="Time Tracker"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
