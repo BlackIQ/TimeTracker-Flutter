@@ -125,3 +125,15 @@ In settings you can access to your data and changing them.
 You can download the app from this repository release.
 
 > Links will be added soon. Now there is no release.
+
+## Download Application
+
+- Android Application.
+
+Download directly from last release.
+
+[TimeTracker 1.0.0](https://github.com/BlackIQ/TimeTracker-Flutter/releases/download/timetracker-flutter-1.0.0/timetracker.apk)
+
+- iOS Application
+
+I don't have **Apple Developer Account**. So there is no iOS released.
