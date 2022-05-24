@@ -19,27 +19,17 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   centerTitle: true,
-      //   elevation: 0,
-      //   title: const Text('Login to your account'),
-      // ),
+      appBar: AppBar(
+        centerTitle: true,
+        elevation: 0,
+        title: const Text('Login to your account'),
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            const SizedBox(height: 125),
-            Center(
-              child: Text(
-                login ? 'Login' : 'Register',
-                style: const TextStyle(
-                  fontSize: 50,
-                ),
-              ),
-            ),
-            const SizedBox(height: 30),
             FullField(
               controller: _email,
               label: 'Email',
@@ -103,20 +93,56 @@ class _AuthScreenState extends State<AuthScreen> {
             const SizedBox(height: 20),
             const Center(child: Text('Or')),
             const SizedBox(height: 20),
-            FullButton(
-              text: 'Authenticate with Google',
-              color: Colors.red,
-              onClick: () async {
-                await googleAuth(context);
-              },
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                FullButton(
+                  text: 'Google',
+                  color: Colors.red,
+                  onClick: () async {
+                    await googleAuth(context);
+                  },
+                ),
+                FullButton(
+                  text: 'Facebook',
+                  color: Colors.blue,
+                  onClick: () async {},
+                ),
+              ],
             ),
             const SizedBox(height: 10),
-            FullButton(
-              text: 'Authenticate Anonymously',
-              color: Colors.grey,
-              onClick: () async {
-                await anonAuth(context);
-              },
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                FullButton(
+                  text: 'Twitter',
+                  color: Colors.lightBlueAccent,
+                  onClick: () async {},
+                ),
+                FullButton(
+                  text: 'Yahoo',
+                  color: Colors.purple,
+                  onClick: () async {},
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                FullButton(
+                  text: 'Github',
+                  color: Colors.black87,
+                  onClick: () async {},
+                ),
+                FullButton(
+                  text: 'Anonymously',
+                  color: Colors.grey,
+                  onClick: () async {
+                    await anonAuth(context);
+                  },
+                ),
+              ],
             ),
           ],
         ),
